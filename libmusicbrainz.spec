@@ -1,25 +1,22 @@
-%define package_name    lib%{name}
 %define	version	2.1.5
-%define release	%mkrel 4
+%define release	%mkrel 5
 
 %define major 4
-%define libname %mklibname %{name} %{major}
-%define develname %mklibname -d %name
+%define libname %mklibname musicbrainz %{major}
+%define develname %mklibname -d musicbrainz
 
-Name:		musicbrainz
+Name:		libmusicbrainz
 Version:	%{version}
 Release:	%{release}
 Summary:	A software library for accesing MusicBrainz servers
-Source:		http://ftp.musicbrainz.org/pub/musicbrainz/%{package_name}-%{version}.tar.bz2
+Source:		http://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
 Patch0:		musicbrainz-2.1.5-gcc43-includes.patch
 URL:		http://www.musicbrainz.org
 Group:		Sound
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 License:	LGPL
 BuildRequires:	libexpat-devel >= 2.0.1
-BuildRequires:	python-ctypes
 BuildRequires:	autoconf2.5 >= 2.58
-BuildRequires:	python-devel
 
 %description
 The MusicBrainz client library allows applications to make metadata
@@ -40,25 +37,16 @@ Summary:	Headers for developing programs that will use libmusicbrainz
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	lib%{name}-devel = %{version}-%{release}
-Obsoletes: %mklibname -d %name 4
+Provides:	musicbrainz-devel = %{version}-%{release}
+Obsoletes: %mklibname -d musicbrainz 4
 
 %description -n	%develname
 This package contains the headers that programmers will need to develop
 applications which will use libmusicbrainz.
 
-%package -n python-%{name}
-Summary:	Python binding to use libmusicbrainz
-Group:		Development/Python
-Requires:	python-ctypes
-Requires:	%{libname} = %{version}-%{release}
-
-%description -n python-%{name}
-Python binding to use libmusicbrainz.
-
 
 %prep
-%setup -q -n %{package_name}-%{version}
+%setup -q
 %patch0 -p1
 
 %build
@@ -71,10 +59,6 @@ rm -rf %{buildroot}
 
 %makeinstall_std
 
-pushd python 
-python setup.py install --prefix=%{buildroot}/%{_prefix}
-popd
-
 %clean
 rm -rf %{buildroot}
 
@@ -86,10 +70,6 @@ rm -rf %{buildroot}
 %postun -n %{libname} -p /sbin/ldconfig
 %endif
 
-%files -n python-%{name}
-%defattr(-, root, root)
-%doc python/examples/
-%{py_puresitedir}/*
 
 %files -n %{libname}
 %defattr(-, root, root)
