@@ -1,5 +1,5 @@
 %define	version	2.1.5
-%define release	%mkrel 5
+%define release	%mkrel 6
 
 %define major 4
 %define libname %mklibname musicbrainz %{major}
