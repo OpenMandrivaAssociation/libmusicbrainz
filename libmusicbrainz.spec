@@ -1,27 +1,27 @@
-%define	version	2.1.5
-%define release	%mkrel 6
 
-%define major 4
-%define libname %mklibname musicbrainz %{major}
-%define develname %mklibname -d musicbrainz
-
-Name:		libmusicbrainz
-Version:	%{version}
-Release:	%{release}
-Summary:	A software library for accesing MusicBrainz servers
-Source:		http://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
-Patch0:		musicbrainz-2.1.5-gcc43-includes.patch
-URL:		http://www.musicbrainz.org
-Group:		Sound
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
-License:	LGPL
-BuildRequires:	libexpat-devel >= 2.0.1
-BuildRequires:	autoconf2.5 >= 2.58
+Name: libmusicbrainz
+Version: 3.0.2
+Release: %mkrel 1
+Summary: A software library for accesing MusicBrainz servers
+Source:	http://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.gz
+Patch0: libmusicbrainz-3.0.2-stdcpp.patch
+URL: http://www.musicbrainz.org
+Group: Sound
+BuildRoot: %{_tmppath}/%{name}-%{version}-buildroot
+License: LGPL
+BuildRequires: cmake
+BuildRequires: neon-devel
+BuildRequires: libdiscid-devel
 
 %description
 The MusicBrainz client library allows applications to make metadata
 lookup to a MusicBrainz server, generate signatures from WAV data and
 create CD Index Disk ids from audio CD roms.
+
+#----------------------------------------------------------------------
+
+%define major 6
+%define libname %mklibname musicbrainz3_ %{major}
 
 %package -n %{libname}
 Summary:	A software library for accesing MusicBrainz servers
@@ -31,6 +31,14 @@ Group:		System/Libraries
 The MusicBrainz client library allows applications to make metadata
 lookup to a MusicBrainz server, generate signatures from WAV data and
 create CD Index Disk ids from audio CD roms.
+
+%files -n %{libname}
+%defattr(-, root, root)
+%{_libdir}/*.so.%{major}*
+
+#----------------------------------------------------------------------
+
+%define develname %mklibname -d musicbrainz
 
 %package -n %develname
 Summary:	Headers for developing programs that will use libmusicbrainz
@@ -44,42 +52,29 @@ Obsoletes: %mklibname -d musicbrainz 4
 This package contains the headers that programmers will need to develop
 applications which will use libmusicbrainz.
 
+%files -n %develname
+%defattr(-, root, root)
+%{_includedir}/*
+%{_libdir}/*.so
+%{_libdir}/pkgconfig/*
+
+#----------------------------------------------------------------------
 
 %prep
 %setup -q
-%patch0 -p1
+%patch0 -p0 -b .orig
 
 %build
-%configure2_5x
+%cmake
 %make
 
 
 %install
 rm -rf %{buildroot}
 
-%makeinstall_std
+%makeinstall_std -C build
 
 %clean
 rm -rf %{buildroot}
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
 
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-
-%files -n %{libname}
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog README TODO INSTALL
-%{_libdir}/*.so.%{major}*
-
-%files -n %develname
-%defattr(-, root, root)
-%{_includedir}/musicbrainz
-%{_libdir}/*.la
-%{_libdir}/*.a
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*
