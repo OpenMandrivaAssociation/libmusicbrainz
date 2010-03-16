@@ -1,7 +1,7 @@
 
 Name: libmusicbrainz
 Version: 3.0.2
-Release: %mkrel 1
+Release: %mkrel 2
 Summary: A software library for accesing MusicBrainz servers
 Source:	http://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.gz
 Patch0: libmusicbrainz-3.0.2-stdcpp.patch
