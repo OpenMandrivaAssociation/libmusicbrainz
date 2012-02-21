@@ -1,5 +1,5 @@
 %define	version	2.1.5
-%define release	%mkrel 8
+%define release	%mkrel 9
 %define major 4
 %define libname %mklibname musicbrainz %{major}
 %define develname %mklibname -d musicbrainz
@@ -57,6 +57,7 @@ applications which will use libmusicbrainz.
 rm -rf %{buildroot}
 
 %makeinstall_std
+rm -rf %buildroot%_libdir/*.la
 
 %clean
 rm -rf %{buildroot}
@@ -69,7 +70,6 @@ rm -rf %{buildroot}
 %files -n %develname
 %defattr(-, root, root)
 %{_includedir}/musicbrainz
-%{_libdir}/*.la
 %{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
