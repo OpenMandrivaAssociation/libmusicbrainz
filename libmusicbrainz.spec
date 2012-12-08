@@ -54,13 +54,7 @@ applications which will use libmusicbrainz.
 
 
 %install
-rm -rf %{buildroot}
-
 %makeinstall_std
-rm -rf %buildroot%_libdir/*.la
-
-%clean
-rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-, root, root)
@@ -73,3 +67,65 @@ rm -rf %{buildroot}
 %{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
+
+
+%changelog
+* Fri Apr 29 2011 Oden Eriksson <oeriksson@mandriva.com> 2.1.5-8mdv2011.0
++ Revision: 660267
+- mass rebuild
+
+* Fri Sep 03 2010 Götz Waschk <waschk@mandriva.org> 2.1.5-7mdv2011.0
++ Revision: 575682
+- revert to 2.1.5
+- update license
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - rebuilt for 2010.1
+
+  + Helio Chissini de Castro <helio@mandriva.com>
+    - New upstream version required by amarok
+
+* Wed Sep 02 2009 Christophe Fergeau <cfergeau@mandriva.com> 2.1.5-6mdv2010.0
++ Revision: 425623
+- rebuild
+
+* Tue Jan 13 2009 Götz Waschk <waschk@mandriva.org> 2.1.5-5mdv2009.1
++ Revision: 329014
+- continue renaming of the package
+- disable python binding
+
+  + Helio Chissini de Castro <helio@mandriva.com>
+    - Moving to proper name
+
+* Mon Aug 18 2008 Emmanuel Andry <eandry@mandriva.org> 2.1.5-4mdv2009.0
++ Revision: 273419
+- fix gcc4.3 build with P0 from gentoo
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Tue Oct 23 2007 Götz Waschk <waschk@mandriva.org> 2.1.5-3mdv2008.1
++ Revision: 101462
+- new devel name
+
+* Thu Jun 07 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 2.1.5-3mdv2008.0
++ Revision: 36910
+- rebuild for expat
+
+* Sun May 27 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 2.1.5-2mdv2008.0
++ Revision: 31795
+- fix bug #31051
+
+* Fri May 25 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 2.1.5-1mdv2008.0
++ Revision: 31018
+- new upstream version
+- drop Patch0 (merged upstream)
+- spec file clean
+
