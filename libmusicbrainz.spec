@@ -8,13 +8,12 @@ Name:		libmusicbrainz
 Version:	%{version}
 Release:	%{release}
 Summary:	A software library for accesing MusicBrainz servers
-Source:		http://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
 Patch0:		musicbrainz-2.1.5-gcc43-includes.patch
 URL:		http://www.musicbrainz.org
 Group:		Sound
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 License:	LGPLv2+
-BuildRequires:	libexpat-devel >= 2.0.1
+BuildRequires:	expat-devel >= 2.0.1
 BuildRequires:	autoconf2.5 >= 2.58
 
 %description
