@@ -50,7 +50,7 @@ applications which will use libmusicbrainz.
 %makeinstall_std
 
 %files -n %{libname}
-%{_libdir}/*.so.%{major}*
+%{_libdir}/libmusicbrainz.so.%{major}*
 
 %files -n %{devname}
 %doc AUTHORS COPYING ChangeLog README TODO INSTALL
