@@ -5,13 +5,13 @@
 Summary:	A software library for accesing MusicBrainz servers
 Name:		libmusicbrainz
 Version:	2.1.5
-Release:	9
+Release:	10
 Group:		Sound
 License:	LGPLv2+
 Url:		http://www.musicbrainz.org
 Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
 Patch0:		musicbrainz-2.1.5-gcc43-includes.patch
-BuildRequires:	pkgconfg(expat)
+BuildRequires:	pkgconfig(expat)
 
 %description
 The MusicBrainz client library allows applications to make metadata
