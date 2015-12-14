@@ -2,6 +2,8 @@
 %define libname %mklibname musicbrainz %{major}
 %define devname %mklibname -d musicbrainz
 
+%define _disable_lto 1
+
 Summary:	A software library for accesing MusicBrainz servers
 Name:		libmusicbrainz
 Version:	2.1.5
