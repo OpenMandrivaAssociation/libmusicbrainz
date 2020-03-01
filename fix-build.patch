@@ -1,0 +1,26 @@
+diff --git a/lib/comhttpsocket.cpp b/lib/comhttpsocket.cpp
+index 78d4458..5e29eaa 100644
+--- a/lib/comhttpsocket.cpp
++++ b/lib/comhttpsocket.cpp
+@@ -22,7 +22,7 @@
+ #include <assert.h>
+ #include <cstring>
+ 
+-const char* g_strCOMVer = "libmusicbrainz/"VERSION;
++const char* g_strCOMVer = "libmusicbrainz/" VERSION;
+ 
+ MBCOMHTTPSocket::MBCOMHTTPSocket()
+ {
+diff --git a/lib/musicbrainz.cpp b/lib/musicbrainz.cpp
+index 8bc5927..72d6f04 100644
+--- a/lib/musicbrainz.cpp
++++ b/lib/musicbrainz.cpp
+@@ -73,7 +73,7 @@ MusicBrainz::MusicBrainz(void)
+     m_depth = 2;
+     m_debug = false;
+     m_maxItems = 25;
+-    m_versionString = string("mb_client/"VERSION);
++    m_versionString = string("mb_client/" VERSION);
+ }
+ 
+ MusicBrainz::~MusicBrainz(void)

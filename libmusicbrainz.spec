@@ -13,6 +13,8 @@ License:	LGPLv2+
 Url:		http://www.musicbrainz.org
 Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
 Patch0:		musicbrainz-2.1.5-gcc43-includes.patch
+Patch1:		libmusicbrainz-2.1.5-gcc7.patch
+Patch2:		fix-build.patch
 BuildRequires:	pkgconfig(expat)
 
 %description
