@@ -10,7 +10,7 @@ Version:	2.1.5
 Release:	24
 Group:		Sound
 License:	LGPLv2+
-Url:		http://www.musicbrainz.org
+Url:		https://www.musicbrainz.org
 Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/%{name}-%{version}.tar.bz2
 Patch0:		musicbrainz-2.1.5-gcc43-includes.patch
 Patch1:		libmusicbrainz-2.1.5-gcc7.patch
